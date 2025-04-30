@@ -1,6 +1,6 @@
 ﻿namespace PointOfSaleScanner.Core;
 
-// utility class to manage the point of sale terminal
+// utility class to show the usage of shopping cart
 public class PointOfSaleTerminal
 {
     private readonly IShoppingCart _shoppingCart;
@@ -19,7 +19,7 @@ public class PointOfSaleTerminal
 
     public void SetPricing(string code, decimal unitPrice, decimal volumePrice = 0, int volumeSize = 0)
     {
-        CartItem cartItem = new(code, unitPrice, volumePrice, volumeSize);
+        PriceSheetItem cartItem = new(code, unitPrice, volumePrice, volumeSize);
 
         _priceSheetRepository.Add(cartItem);
     }

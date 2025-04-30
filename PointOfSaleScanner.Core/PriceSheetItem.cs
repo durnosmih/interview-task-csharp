@@ -1,13 +1,13 @@
 ﻿namespace PointOfSaleScanner.Core;
 
-public record CartItem
+public record PriceSheetItem
 {
     public string Code { get; }
     public decimal UnitPrice { get; }
     public decimal VolumePrice { get; }
     public int VolumeSize { get; }
 
-    public CartItem(string code, decimal unitPrice, decimal volumePrice = 0, int volumeSize = 0)
+    public PriceSheetItem(string code, decimal unitPrice, decimal volumePrice = 0, int volumeSize = 0)
     {
         Code = code;
         UnitPrice = unitPrice;

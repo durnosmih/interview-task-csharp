@@ -2,7 +2,7 @@
 {
     public interface IPriceSheetRepository
     {
-        void Add(CartItem cartItem);
-        CartItem Find(string code);
+        void Add(PriceSheetItem cartItem);
+        PriceSheetItem Find(string code);
     }
 }

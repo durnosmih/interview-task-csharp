@@ -22,29 +22,22 @@ namespace PointOfSaleScanner.Console
             terminal.SetPricing("D", 0.75m);
 
             string input1 = "AAAABCDAAA";
-
-            foreach (char item in input1)
-            {
-                terminal.Scan(item.ToString());
-            }
-
-            Console.WriteLine($"Total for {input1}: {terminal.CalculateTotal():C}");
-            terminal.Reset();
+            RunTest(input1, terminal);
 
             string input2 = "CCCCCCC";
-            foreach (char item in input2)
-            {
-                terminal.Scan(item.ToString());
-            }
-            Console.WriteLine($"Total for {input2}: {terminal.CalculateTotal():C}");
-            terminal.Reset();
+            RunTest(input2, terminal);
 
             string input3 = "ABCD";
-            foreach (char item in input3)
+            RunTest(input3, terminal);
+        }
+
+        static void RunTest(string input, PointOfSaleTerminal terminal)
+        {
+            foreach (char item in input)
             {
                 terminal.Scan(item.ToString());
             }
-            Console.WriteLine($"Total for {input3}: {terminal.CalculateTotal():C}");
+            Console.WriteLine($"Total for {input}: {terminal.CalculateTotal():C}");
             terminal.Reset();
         }
     }
