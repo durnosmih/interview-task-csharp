@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointOfSaleScanner.Console", "PointOfSaleScanner.Console\PointOfSaleScanner.Console.csproj", "{E19C1CD9-6C69-4889-AC8B-50E7268541B3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointOfSaleScanner.Core", "PointOfSaleScanner.Core\PointOfSaleScanner.Core.csproj", "{1B870EB6-88E8-44D2-BDA4-2FB7C1A41C74}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointOfSaleScanner.Tests", "PointOfSaleScanner.Tests\PointOfSaleScanner.Tests.csproj", "{895A3007-6E6F-45BA-B93B-2768DF551DA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointOfSaleScanner.DependencyInjection", "PointOfSaleScanner.DependencyInjection\PointOfSaleScanner.DependencyInjection.csproj", "{0366F071-F8F7-4F39-9E25-12C32A0AB74F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{895A3007-6E6F-45BA-B93B-2768DF551DA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{895A3007-6E6F-45BA-B93B-2768DF551DA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{895A3007-6E6F-45BA-B93B-2768DF551DA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0366F071-F8F7-4F39-9E25-12C32A0AB74F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0366F071-F8F7-4F39-9E25-12C32A0AB74F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0366F071-F8F7-4F39-9E25-12C32A0AB74F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0366F071-F8F7-4F39-9E25-12C32A0AB74F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

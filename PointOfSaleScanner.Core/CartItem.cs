@@ -1,9 +1,35 @@
 ﻿namespace PointOfSaleScanner.Core;
 
-public class CartItem
+public record CartItem
 {
-    public string Code { get; set; }
-    public decimal UnitPrice { get; set; }
-    public decimal VolumePrice { get; set; }
-    public int VolumeQuantity { get; set; }
+    public string Code { get; }
+    public decimal UnitPrice { get; }
+    public decimal VolumePrice { get; }
+    public int VolumeSize { get; }
+
+    public CartItem(string code, decimal unitPrice, decimal volumePrice = 0, int volumeSize = 0)
+    {
+        Code = code;
+        UnitPrice = unitPrice;
+        VolumePrice = volumePrice;
+        VolumeSize = volumeSize;
+    }
+
+    public bool VolumePricingApplied => VolumeSize > 0;
+
+    public int GetUnitPricedQuantity(int overallQuantity)
+    {
+        if (VolumePricingApplied)
+            return overallQuantity % VolumeSize;
+        
+        return overallQuantity;
+    }
+
+    public int GetVolumePricedQuantity(int overallQuantity)
+    {
+        if (VolumePricingApplied)
+            return overallQuantity / VolumeSize;
+        
+        return 0;
+    }
 }

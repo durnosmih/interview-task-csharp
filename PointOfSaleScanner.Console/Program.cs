@@ -1,33 +1,51 @@
-﻿namespace PointOfSaleScanner.Console
+﻿using Microsoft.Extensions.DependencyInjection;
+using PointOfSaleScanner.Core;
+using PointOfSaleScanner.DependencyInjection;
+
+namespace PointOfSaleScanner.Console
 {
-    using PointOfSaleScanner.Core;
-    using PointOfSaleScanner.Core.Utility;
     using Console = System.Console;
 
     internal class Program
     {
         static void Main(string[] args)
         {
-            string input = "AAAABCDAAA";
+            var serviceProvider = new ServiceCollection()
+                .AddPointOfSaleScanner()
+                .BuildServiceProvider();
 
-            var builder = new PricingSheetBuilder();
-            builder.WithItem("A").SetUnitPrice(1.25m).SetVolumePrice(3.00m, 3);
-            builder.WithItem("B").SetUnitPrice(4.25m);
-            builder.WithItem("C").SetUnitPrice(1.00m).SetVolumePrice(5.00m, 6);
-            builder.WithItem("D").SetUnitPrice(0.75m);
-            var priceSheet = builder.Build();
+            var terminal = serviceProvider.GetRequiredService<PointOfSaleTerminal>();
 
-            ICartItemPriceCalculator cartItemPriceCalculator = new CartItemPriceCalculator(priceSheet);
-            IShoppingCart shoppingCart = new ShoppingCart(cartItemPriceCalculator);
+            terminal.SetPricing("A", 1.25m, 3.00m, 3);
+            terminal.SetPricing("B", 4.25m);
+            terminal.SetPricing("C", 1.00m, 5.00m, 6);
+            terminal.SetPricing("D", 0.75m);
 
-            foreach (char item in input)
+            string input1 = "AAAABCDAAA";
+
+            foreach (char item in input1)
             {
-                shoppingCart.Scan(item.ToString());
+                terminal.Scan(item.ToString());
             }
 
-            decimal total = shoppingCart.GetTotal();
+            Console.WriteLine($"Total for {input1}: {terminal.CalculateTotal():C}");
+            terminal.Reset();
 
-            Console.WriteLine($"Total: {total:C}");
+            string input2 = "CCCCCCC";
+            foreach (char item in input2)
+            {
+                terminal.Scan(item.ToString());
+            }
+            Console.WriteLine($"Total for {input2}: {terminal.CalculateTotal():C}");
+            terminal.Reset();
+
+            string input3 = "ABCD";
+            foreach (char item in input3)
+            {
+                terminal.Scan(item.ToString());
+            }
+            Console.WriteLine($"Total for {input3}: {terminal.CalculateTotal():C}");
+            terminal.Reset();
         }
     }
 }

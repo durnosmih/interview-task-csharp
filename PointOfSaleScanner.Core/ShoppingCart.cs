@@ -25,4 +25,9 @@ public class ShoppingCart : IShoppingCart
     }
 
     public decimal GetTotal() => _scannedItems.Sum(item => _cartItemPriceCalculator.GetTotal(item.Key, item.Value));
+
+    public void Reset()
+    {
+        _scannedItems.Clear();
+    }
 }
